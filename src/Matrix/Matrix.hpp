@@ -1,3 +1,4 @@
+#include <cstdio>
 #ifndef Matrix_HPP
 #define Matrix_HPP
 class Matrix
