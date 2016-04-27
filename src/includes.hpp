@@ -5,3 +5,4 @@
 #include "Matrix/matrixInfinityNorm.hpp"
 #include "Matrix/matrixMatrixMultiply.hpp"
 #include "Matrix/matrixInverse.hpp"
+#include "Matrix/solveAXB.hpp"
