@@ -2,7 +2,10 @@
 #include "matrixInfinityNorm.hpp"
 #include "matrixMatrixMultiply.hpp"
 #include "solveAXB.hpp"
+<<<<<<< HEAD
 #include "matrixDisplay.hpp"
+=======
+>>>>>>> origin/master
 #include <cblas.h>
 #include <cstring>
 #include <cmath>/*This would be used for calculating the log to the base 2 for finding the squaring coefficient.*/
@@ -31,9 +34,16 @@ void matrixExponential_serial(Matrix &A, Matrix &Exp)
     norm    =   matrixInfinityNorm(A);
     sigma   =   MAX(0,(int)log2(norm));
     coeff   =   pow(2,-sigma);
+<<<<<<< HEAD
     cblas_sscal((N*N),coeff,&B[0][0],1);
     matrixMatrixMultiply_fast(B,B,B_2);
     matrixMatrixMultiply_fast(B_2,B,B_3);
+=======
+
+    cblas_sscal((N*N),coeff,&B[0][0],1);
+    matrixMatrixMultiply(B,B,B_2);
+    matrixMatrixMultiply(B_2,B,B_3);
+>>>>>>> origin/master
     /*Initializing the Identity Matrix, Numerator Matrix and Denominator matrices.*/
     for(i=0;i<N;i++)
     {
@@ -48,17 +58,26 @@ void matrixExponential_serial(Matrix &A, Matrix &Exp)
     cblas_saxpy((N*N),120.0,&Identity[0][0],1,&Num[0][0],1);
     cblas_saxpy((N*N),60.0,&B[0][0],1,&Num[0][0],1);
     cblas_saxpy((N*N),12.0,&B_2[0][0],1,&Num[0][0],1);
+<<<<<<< HEAD
     cblas_saxpy((N*N),1.0,&B_3[0][0],1,&Num[0][0],1);
+=======
+    cblas_saxpy((N*N),1.0,&B_2[0][0],1,&Num[0][0],1);
+>>>>>>> origin/master
 
     cblas_saxpy((N*N),120.0,&Identity[0][0],1,&Den[0][0],1);
     cblas_saxpy((N*N),-60.0,&B[0][0],1,&Den[0][0],1);
     cblas_saxpy((N*N),12.0,&B_2[0][0],1,&Den[0][0],1);
+<<<<<<< HEAD
     cblas_saxpy((N*N),-1.0,&B_3[0][0],1,&Den[0][0],1);
+=======
+    cblas_saxpy((N*N),-1.0,&B_2[0][0],1,&Den[0][0],1);
+>>>>>>> origin/master
 
     solveAXB(Den,R,Num);
     for(i=0;i<sigma;i++)
     {
         matrixMatrixMultiply(R,R,R_2);
+<<<<<<< HEAD
         memcpy(&R[0][0],&R_2[0][0],N*N*sizeof(float));
     }
     //TODO: Check this once.
@@ -128,4 +147,14 @@ void matrixExponential5_serial(Matrix &A, Matrix &Exp)
     return ;
 }
 
+=======
+        memcpy(&R[0][0],&R[0][0],N*N*sizeof(float));
+    }
+    //TODO: Check this once.
+
+    return ;
+}
+
+
+>>>>>>> origin/master
 #endif
