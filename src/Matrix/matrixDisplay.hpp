@@ -13,7 +13,6 @@ void matrixDisplay(Matrix &A)
     }
     return ;
 }
-<<<<<<< HEAD
 
 void matrixDisplay4(Matrix &A)
 {
@@ -27,6 +26,4 @@ void matrixDisplay4(Matrix &A)
     return ;
 }
 
-=======
->>>>>>> origin/master
 #endif

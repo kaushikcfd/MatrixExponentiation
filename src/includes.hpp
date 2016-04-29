@@ -6,7 +6,4 @@
 #include "Matrix/matrixMatrixMultiply.hpp"
 #include "Matrix/matrixInverse.hpp"
 #include "Matrix/solveAXB.hpp"
-<<<<<<< HEAD
 #include "Matrix/matrixExponential_serial.hpp"
-=======
->>>>>>> origin/master
