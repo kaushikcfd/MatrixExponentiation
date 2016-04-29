@@ -1,25 +1,35 @@
 #include "src/includes.hpp"
 
-#define N 1000
+#define NR 3
+#define NC 3
 
 int main()
 {
-    Matrix A(N,N);
-    Matrix R(N,N);
+    Matrix A(NR,NC);
+    Matrix B(NR,3);
+    Matrix X(NR,3);
     unsigned i,j;
 
-    for(i=0;i<N;i++)
-        for(j=0;j<N;j++)
+    for(i=0;i<NC;i++)
+        for(j=0;j<NC;j++)
         {
-            A[i][j] =   0.01;
+            A[i][j] =   i+j+2;
+            B[i][j] =   1;
         }
 
-    matrixExponential5_serial(A,R);
-    //printf("**A**\n");
-    //matrixDisplay(A);
+    A[0][2] =   63;
+    A[2][2] =   163;
+    B[0][0] =   3;
+    B[1][0] =   4;
+    B[2][0] =   1;
+
+    solveAXB(A,X,B);
+
+    matrixDisplay(X);
     printf("*****\n");
-    printf("**R**\n");
-    matrixDisplay(R);
+    solveAXB_openmp(A,X,B);
+
+    matrixDisplay(X);
     printf("*****\n");
     return 0;
 }
